@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+    let array = [];
+
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("nyttTall").addEventListener("click", nyttTall);
+    });
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("skrivInnArray").addEventListener("click", skrivInnArray);
+    });
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("sorterSignende").addEventListener("click", sorterSignende);
+    });
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("sorterSynkende").addEventListener("click", sorterSynkende);
+    });
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("storsteTall").addEventListener("click", storsteTall);
+    })
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("minsteTall").addEventListener("click", minsteTall);
+    })
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("gjennomsnitt").addEventListener("click", gjennomsnitt);
+    })
+
+    function nyttTall() {
+        let tall = document.getElementById("tall").value;
+        array.push(Number(tall));
+        document.getElementById("tall").value = "";
+    }
+
+    function skrivInnArray(){
+        document.getElementById("arrayOutput").textContent = "Array: " + array.join(", ");
+    }
+
+    function sorterSignende(){
+        array.sort(function(a, b){return a - b});
+        document.getElementById("arrayOutput").textContent = "Sortert stigende: " + array.join(", ");
+    }
+
+    function sorterSynkende(){
+        array.sort(function(a, b){return b - a});
+        document.getElementById("arrayOutput").textContent = "Sortert synkende: " + array.join(", ");
+    }
+
+    function storsteTall(){
+        array.sort(function(a, b) {return a - b})
+        document.getElementById("arrayOutput").textContent = "Srorste tall: " + array.slice(-1)[0];
+    }
+    function minsteTall(){
+        array.sort(function(a, b) {return b - a})   
+        document.getElementById("arrayOutput").textContent = "Minste tall: " + array.slice(-1)[0];
+    }
+    function gjennomsnitt(){
+        let sum = 0;
+        let gjennomsnittTall = 0;
+        let index = 0;
+        for (index; index < array.length; index++) {
+            sum += array[index]
+        }
+        gjennomsnittTall = sum / array.length;
+        document.getElementById("arrayOutput").textContent = "Gjennomsnitt: " + gjennomsnittTall;
+    }
+</script>
+<body>
+    <p>Tall: <input type="number" id="tall">Skriv inn tall</p>
+    <button id="nyttTall">Nytt tall</button>
+    <button id="skrivInnArray">Skriv inn array</button>
+    <button id="sorterSignende">Sortere signende</button>
+    <button id="sorterSynkende">Sortere synkende</button>
+    <button id="storsteTall">Storste tallet</button>
+    <button id="minsteTall">Minste tallet</button>
+    <button id="gjennomsnitt">Gjennomsnittet</button>
+    <p id="arrayOutput"></p>
+</body>
+</html>

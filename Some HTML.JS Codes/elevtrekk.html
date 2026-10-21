@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><input type="text" id="navn"></p>
+    <button id="btnNew">New</button>
+    <button id="btnTrekk">Trekk</button>
+    <p id="elevArr"></p>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            document.getElementById("btnNew").onclick = newElev;
+            document.getElementById("btnTrekk").onclick = trekk;
+        }
+
+        let elev = [];
+
+        function newElev() {
+            let navn = document.getElementById("navn");
+
+            elev.push(navn.value);
+            navn.value = "";
+        }
+
+        function trekk() {
+            for (let i = elev.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                let temp = elev[i];
+                elev[i] = elev[j];
+                elev[j] = temp;
+            }
+            for (let index = 0; index < elev.length; index++) {
+                document.getElementById("elevArr").innerHTML += elev[index] + "<br>";
+            }
+        }
+    </script>
+</body>
+
+</html>

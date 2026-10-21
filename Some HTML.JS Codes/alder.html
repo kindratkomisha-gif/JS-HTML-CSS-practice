@@ -1,0 +1,39 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <meta charset=utf-8/>
+	<title>Alder</title>
+  </head>	
+  <script>
+		window.onload=oppstart;
+		
+		function oppstart() {
+		  document.getElementById("btnUtfoer").onclick=utfoer;
+		}
+		
+		function utfoer()	{ 
+		    var verdi=document.getElementById("textVerdi").value;
+			document.getElementById("utskrift").innerHTML="";
+			if(verdi < 0)	{
+				document.getElementById("utskrift").innerHTML="Du er ikke født!";
+			}
+			else if(verdi < 18)	{
+				document.getElementById("utskrift").innerHTML="Du er ikke myndig!";
+			}
+			else if(verdi < 67)	{
+				document.getElementById("utskrift").innerHTML="Du er nå blitt myndig";
+			}
+			else {
+				document.getElementById("utskrift").innerHTML="Du er pensjonist";
+			}		
+		}
+  </script>
+  <body>
+	<p>Alder:<input type="text" id="textVerdi" /><br><br>
+	<button id="btnUtfoer">Utfør</button>
+	<h2 id="utskrift"></h2>
+  </body>
+</html>
+
+    
+			

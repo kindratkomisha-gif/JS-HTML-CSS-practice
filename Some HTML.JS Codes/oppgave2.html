@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = oppstart;
+
+    function oppstart() {
+        document.getElementById("knapp1").onclick = start;
+    }
+    function start() {
+        let tale = parseInt(document.getElementById("text").value);
+        if (tale < 100) {
+            document.getElementById("result").innerHTML += "Beklager du er for lav med kun " + tale + " cm på strømpelesten!" + "<br>";
+        } else if (tale >= 100) {
+            document.getElementById("result").innerHTML += "Du er " + tale + " cm høy! Hopp inn i vogna!" + "<br>";
+        }
+    }
+</script>
+
+<body>
+    <p><input class="text" id="text" type="text"></p>
+    <button id="knapp1" type="button">Start</button>
+    <p id="result"></p>
+</body>
+
+</html>

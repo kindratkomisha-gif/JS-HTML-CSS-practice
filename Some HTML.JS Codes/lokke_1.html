@@ -1,0 +1,66 @@
+<!Doctype HTML>
+<html>
+  <head>
+	<meta charset=utf-8/>
+	<title>Skriv ut tallrekke</title>
+  </head>	
+	<script>
+		
+		window.onload=oppstart;
+		
+		function oppstart()	{
+		  document.getElementById("output").style.display="none";
+		  document.getElementById("knapp1").onclick=start; 
+		}  
+		
+		function start() {
+		  document.getElementById("output").style.display="block"; //Gjør elementet "output" synlig.
+		  
+		  /*Elementene <input> inneholder en tekststreng. Ved å bruke funksjonen parseInt sikrer vi at 
+		  inndataene blir konvertert til et heltall */
+		  var tall=parseInt(document.getElementById("txtInput1").value); //henter verdiene fra skjemaelementet
+		  var i=1;
+			  	  
+		  while( i <= tall) {
+			document.getElementById("resultat").innerHTML += i + "." + "runde i løkka<br />";
+			i++;
+		  }
+		}     
+	</script>
+	
+	<style>
+		#kontainer {
+			width: 780px; 
+			margin-left: auto;
+			margin-right: auto;
+			padding: 10px;
+			background-color: blue;
+			border: 5px solid #CC9900;
+		}
+	
+		#input, #output  {
+			padding: 20px 20px;
+			border: 5px solid #CC9900;
+			text-align: left;
+			background-color: lightblue;
+			margin: 20px		
+		}	
+	</style>
+  <body>
+	<div id="kontainer">
+		<div id="input">
+			<h2>Tast inn et heltall:<h2>
+			Tall1:<input id="txtInput1" type="text"/><br>
+			<button id="knapp1" type="button">Start</button>
+        </div>
+		<div id="output">
+		  <h3 id="resultat"></h3>
+		</input>
+    </div> <!-- kontainer -->
+  </body>
+</html>
+
+
+
+
+

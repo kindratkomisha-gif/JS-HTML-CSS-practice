@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+  </style>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const fontSize = 20;
+    let width, height, columns;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let radius = 150;
+
+    let activeColumn = -1;
+
+    let yPosition = [];
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+
+      columns = Math.floor(width / fontSize);
+
+      for (let i = 0; i < columns; i++) {
+        yPosition[i] = Math.random() * 20;
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < yPosition.length; i++) {
+        const x = i * fontSize;
+        const y = yPosition[i] * fontSize;
+
+        const dx = x - mouseX;
+        const dy = y - mouseY;
+
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < radius) {
+          const opacity = 1 - (distance / radius);
+          ctx.fillStyle = `rgba(0, 255, 0, ${opacity})`;
+
+          let text = Math.floor(Math.random() * 10);
+          ctx.fillText(text, x, y);
+        }
+        yPosition[i] += 1;
+
+        if (y > height) {
+          yPosition[i] = 0;
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+
+</html>

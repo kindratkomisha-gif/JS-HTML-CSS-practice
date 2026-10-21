@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Skriv inn programfagene du har dette skoleåret</h2>
+    <p>Fag 1: <input type="text" id="txtFag1"> Karakter: <input type="number" id="txtKar1"></p> <br>
+    <p>Fag 2: <input type=" text" id="txtFag2"> Karakter: <input type="number" id="txtKar2"></p> <br>
+    <p>Fag 3: <input type=" text" id="txtFag3"> Karakter: <input type="number" id="txtKar3"></p> <br>
+    <button id="btnBeregn">Beregne</button>
+
+    <table>
+        <tr>
+            <th>Fag</th>
+            <th>Karakterer</th>
+        </tr>
+        <tr>
+            <td id="f"></td>
+            <td id="k"></td>
+        </tr>
+    </table>
+    <h3 id="gjennomsnitt"></h3>
+
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            document.getElementById("btnBeregn").onclick = beregn;
+        }
+
+        function beregn() {
+            let karakter = [];
+            let fag = [];
+            let gjennomsnitt = 0;
+
+            document.getElementById("f").innerHTML = "";
+            document.getElementById("k").innerHTML = "";
+
+            for (let index = 1; index <= 3; index++) {
+                fag.push(document.getElementById("txtFag" + index).value);
+                karakter.push(parseFloat(document.getElementById("txtKar" + index).value));
+                gjennomsnitt = gjennomsnitt + karakter[index - 1];
+            }
+
+            gjennomsnitt = gjennomsnitt / karakter.length;
+            gjennomsnitt = gjennomsnitt.toFixed(2);
+
+            for (let index = 0; index < karakter.length; index++) {
+                document.getElementById("f").innerHTML += fag[index] + "<br>";
+                document.getElementById("k").innerHTML += karakter[index] + "<br>";
+            }
+            document.getElementById("gjennomsnitt").innerHTML = "Gjennomsnittskarakter: " + gjennomsnitt;
+        }
+    </script>
+</body>
+
+</html>

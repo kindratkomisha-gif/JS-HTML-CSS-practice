@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = oppstart;
+
+    function oppstart() {
+        document.getElementById("knapp1").onclick = start;
+    }
+    function start() {
+        let tickets = parseInt(document.getElementById("tickets").value);
+        let ticketsArray = [];
+        let winner1 = [];
+        let winner = [];
+        for (let i = 0; i < tickets; i++) {
+            ticketsArray.push(i);
+        }
+        for (let i = 0; i < 3; i++) {
+            let randomIndex = Math.floor(Math.random() * ticketsArray.length);
+            winner1.push(ticketsArray[randomIndex]);
+        }
+        document.getElementById("result1").innerHTML = "Vinner 1: " + winner1.join(", ");
+
+        for (let i = 0; i < 1; i++) {
+            let randomIndex = Math.floor(Math.random() * winner1.length);
+            winner.push(winner1[randomIndex]);
+        }
+        document.getElementById("result2").innerHTML = "Vinner 2: " + winner.join(", ");
+    }
+</script>
+<body>
+    <p><input type="text" id="tickets"></p>
+    <button id="knapp1">Start</button>
+    <p id="result1"></p>
+    <p id="result2"></p>
+</body>
+</html>

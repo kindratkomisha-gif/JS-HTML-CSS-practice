@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload=start;
+    function start() {
+        let tale = Math.floor(Math.random() * 100) + 1;
+
+        if (tale < 50) {
+        process.exit(0)
+        }
+        let antall = 0;
+        while (antall < tale){
+            document.getElementById("text").innerHTML += antall + "<br>";
+            antall++;
+        }
+    }
+</script>
+<body>
+    <p class="text" id="text"></p>
+</body>
+</html>
